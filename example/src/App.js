@@ -1,10 +1,24 @@
 import React from 'react'
 
-import { ExampleComponent } from '@bapana/react-sidebar'
+import Sidebar from '@bapana/react-sidebar'
 import '@bapana/react-sidebar/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const brandName = {
+    longName: 'Hello',
+    shortName: 'He'
+  };
+
+  const menuList = [
+    {
+      name: 'Home',
+      icon: <p>H</p>,
+      to: '/',
+      hasChildren: false,
+      subMenu: []
+    }
+  ];
+  return <Sidebar brandName={brandName} menuList={menuList} />
 }
 
 export default App
