@@ -13,13 +13,13 @@ npm install --save @bapana/react-sidebar
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
 import Sidebar from '@bapana/react-sidebar'
 import '@bapana/react-sidebar/dist/index.css'
 
-class Example extends Component {
-  render() {
+const ExampleComponent = () => {
+  
     const brandName = {
       longName: 'Application',
       shortName: 'App'
@@ -52,8 +52,8 @@ class Example extends Component {
         ]
       }
     ]
+
     return <Sidebar brandName={brandName} menuList={menuList} />
-  }
 }
 ```
 
