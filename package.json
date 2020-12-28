@@ -4,7 +4,7 @@
   "description": "Custom modern sidebar for react applications",
   "author": "Parthiban Baskar",
   "license": "MIT",
-  "repository": "Parthiban Baskar/@bapana/react-sidebar",
+  "repository": "https://github.com/parthikrb/react-sidebar",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
