@@ -78,4 +78,4 @@ ReactDOM.render(
 
 ## License
 
-MIT © [Parthiban Baskar](https://github.com/Parthiban Baskar)
+MIT © [Parthiban Baskar](https://github.com/parthikrb)
