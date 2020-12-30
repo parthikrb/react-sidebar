@@ -1,14 +1,28 @@
 {
     "cSpell.words": [
         "Baskar",
+        "Contex",
+        "Modernizr",
         "Parens",
         "Parthiban",
+        "Preact",
         "bapana",
         "browserslist",
+        "destructure",
+        "filesize",
         "fontawesome",
         "fortawesome",
+        "hashbang",
+        "isarray",
+        "isopen",
         "microbundle",
+        "noslash",
         "paren",
-        "predeploy"
+        "postbuild",
+        "predeploy",
+        "sidenav",
+        "styleguide",
+        "styleguidist",
+        "unlisten"
     ]
 }
