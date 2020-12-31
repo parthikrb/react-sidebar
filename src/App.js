@@ -39,6 +39,24 @@ const App = () => {
           to: '/report'
         }
       ]
+    },
+    {
+      name: 'Planner',
+      icon: <FontAwesomeIcon icon={faAddressCard} />,
+      to: '/planner',
+      hasChildren: true,
+      subMenu: [
+        {
+          name: 'Cast',
+          icon: <FontAwesomeIcon icon={faBookmark} />,
+          to: '/cast'
+        },
+        {
+          name: 'Vote',
+          icon: <FontAwesomeIcon icon={faRetweet} />,
+          to: '/vote'
+        }
+      ]
     }
   ]
   return <Sidebar brandName={brandName} menuList={menuList} />

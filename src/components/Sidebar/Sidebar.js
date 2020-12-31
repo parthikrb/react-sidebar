@@ -8,13 +8,21 @@ import Header from '../Header/Header'
 import {
   SidebarDrawer,
   MenuItem,
+  MainMenu,
   MenuName,
   MenuIcon,
   MenuContainer,
   SubMenu,
+  SubMenuItem,
   DropDownIcon,
   Toggle
 } from './Sidebar.style'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import {
+  sidebarVariants,
+  subTitleVariants,
+  titleVariants
+} from '../../config/styles/variants'
 
 const Sidebar = (props) => {
   const { brandName, isExpanded, menuList } = props
@@ -50,6 +58,7 @@ const Sidebar = (props) => {
 
   const handleExpandMenu = (index) => {
     const _menuItems = [...menuItems]
+
     // Set the selected menu to open
     _menuItems[index].isOpen = !_menuItems[index].isOpen
     // Set other menu items to close
@@ -67,7 +76,6 @@ const Sidebar = (props) => {
     // Reset Menu selected on every click
     _menuItems.forEach((menuItem) => {
       menuItem.isSelected = false
-      menuItem.isOpen = false
       menuItem.subMenu.forEach((subMenu) => {
         subMenu.isSelected = false
       })
@@ -81,6 +89,7 @@ const Sidebar = (props) => {
       ].subMenu[subMenuIndex].isSelected
     } else {
       _menuItems[index].isSelected = !_menuItems[index].isSelected
+      _menuItems.forEach((menuItem) => (menuItem.isOpen = false))
     }
     setMenuItems(_menuItems)
   }
@@ -93,55 +102,95 @@ const Sidebar = (props) => {
 
   return (
     <BrowserRouter>
-      <SidebarDrawer id='sidebar' shouldExpand={shouldExpand}>
-        <Header shouldExpand={shouldExpand} brandName={brandName} />
+      <AnimateSharedLayout>
+        <AnimatePresence>
+          <SidebarDrawer
+            layout
+            id='sidebar'
+            variants={sidebarVariants}
+            animate={shouldExpand ? 'expanded' : 'collapsed'}
+            initial={false}
+          >
+            <Header shouldExpand={shouldExpand} brandName={brandName} />
 
-        {menuItems.map((mainMenu, index) => (
-          <MenuContainer key={index} shouldExpand={shouldExpand}>
-            <MenuItem
-              to={mainMenu.to}
-              onClick={() => handleMenuClick(index)}
-              expanded={mainMenu.isOpen ? 1 : 0}
-              selected={mainMenu.isSelected}
-            >
-              <MenuIcon shouldExpand={shouldExpand}>{mainMenu.icon}</MenuIcon>
-              <MenuName shouldExpand={shouldExpand}>{mainMenu.name}</MenuName>
-              {mainMenu.hasChildren && shouldExpand && (
-                <DropDownIcon open={mainMenu.isOpen || false} />
-              )}
-            </MenuItem>
-            {mainMenu.hasChildren &&
-              mainMenu.isOpen &&
-              mainMenu.subMenu.map((subMenuItem, sIndex) => (
-                <SubMenu
-                  to={`${mainMenu.to}${subMenuItem.to}`}
-                  key={sIndex}
-                  onClick={() => handleMenuClick(`${index}_${sIndex}`)}
-                  selected={subMenuItem.isSelected}
-                  activeStyle={{
-                    color: '#1abc9c'
-                  }}
+            {menuItems.map((mainMenu, index) => (
+              <MenuContainer key={index} shouldExpand={shouldExpand}>
+                <MenuItem
+                  to={mainMenu.to}
+                  onClick={() => handleMenuClick(index)}
+                  expanded={mainMenu.isOpen ? 1 : 0}
+                  selected={mainMenu.isSelected}
                 >
-                  {subMenuItem.icon && shouldExpand && (
+                  <MainMenu
+                    layout
+                    shouldExpand={shouldExpand}
+                    selected={mainMenu.isSelected}
+                    variants={subTitleVariants}
+                    initial='hidden'
+                    animate='show'
+                    exit='hidden'
+                  >
                     <MenuIcon shouldExpand={shouldExpand}>
-                      {subMenuItem.icon}
+                      {mainMenu.icon}
                     </MenuIcon>
-                  )}
-                  <MenuName shouldExpand={shouldExpand}>
-                    {subMenuItem.name}
-                  </MenuName>
-                </SubMenu>
-              ))}
-          </MenuContainer>
-        ))}
+                    <MenuName
+                      layout
+                      shouldExpand={shouldExpand}
+                      variants={titleVariants}
+                      initial='hidden'
+                      animate='show'
+                      exit='hidden'
+                    >
+                      {mainMenu.name}
+                    </MenuName>
 
-        <Toggle onClick={handleToggle}>
-          <FontAwesomeIcon
-            icon={faExchangeAlt}
-            style={{ width: '1.3em', height: '1.3em' }}
-          />
-        </Toggle>
-      </SidebarDrawer>
+                    {mainMenu.hasChildren && shouldExpand && (
+                      <DropDownIcon open={mainMenu.isOpen || false} />
+                    )}
+                  </MainMenu>
+                </MenuItem>
+                {mainMenu.hasChildren &&
+                  mainMenu.isOpen &&
+                  mainMenu.subMenu.map((subMenuItem, sIndex) => (
+                    <SubMenu
+                      to={`${mainMenu.to}${subMenuItem.to}`}
+                      key={sIndex}
+                      onClick={() => handleMenuClick(`${index}_${sIndex}`)}
+                      activeStyle={{
+                        color: '#1abc9c'
+                      }}
+                    >
+                      <SubMenuItem
+                        layout
+                        variants={subTitleVariants}
+                        selected={subMenuItem.isSelected}
+                        initial='hidden'
+                        animate='show'
+                        exit='hidden'
+                      >
+                        {subMenuItem.icon && shouldExpand && (
+                          <MenuIcon shouldExpand={shouldExpand}>
+                            {subMenuItem.icon}
+                          </MenuIcon>
+                        )}
+                        <MenuName shouldExpand={shouldExpand}>
+                          {subMenuItem.name}
+                        </MenuName>
+                      </SubMenuItem>
+                    </SubMenu>
+                  ))}
+              </MenuContainer>
+            ))}
+
+            <Toggle onClick={handleToggle}>
+              <FontAwesomeIcon
+                icon={faExchangeAlt}
+                style={{ width: '1.3em', height: '1.3em' }}
+              />
+            </Toggle>
+          </SidebarDrawer>
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </BrowserRouter>
   )
 }

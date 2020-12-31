@@ -27,7 +27,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -48,7 +48,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             uglify()
@@ -81,7 +81,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -112,7 +112,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             terser()
@@ -136,7 +136,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -158,7 +158,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             terser()

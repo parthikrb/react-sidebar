@@ -15,7 +15,7 @@ npm install --save @bapana/react-sidebar
 ```jsx
 import React from 'react'
 // Sidebar Component
-import { Sidebar } from '@bapana/react-sidebar'
+import Sidebar from '@bapana/react-sidebar'
 import '@bapana/react-sidebar/lib/index.css'
 // Icons for the menu and sub menu items
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

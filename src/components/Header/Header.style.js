@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 
 export const BrandContainer = styled.div`
   width: 100%;
@@ -9,14 +10,13 @@ export const BrandContainer = styled.div`
   line-height: 3em;
 `
 
-export const Brand = styled.h3`
+export const Brand = styled(motion.div)`
   text-align: center;
   font-size: xx-large;
   font-weight: bolder;
   letter-spacing: 0.1em;
   display: ${(props) => (props.shouldDisplay ? 'block' : 'none')};
-  transition: ease-in display;
-  transition-delay: 0.3s;
+  cursor: pointer;
 `
 
 export const BrandLogo = styled.img`

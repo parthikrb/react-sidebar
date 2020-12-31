@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
-export const SidebarDrawer = styled.div`
-  width: ${(props) => (props.shouldExpand ? '20%' : '5%')};
+export const SidebarDrawer = styled(motion.div)`
   height: 100vh;
   max-width: 280px;
   min-width: 60px;
@@ -13,23 +13,24 @@ export const SidebarDrawer = styled.div`
   position: relative;
   background-color: #222f3e;
   color: #bdc3c7;
-  transition: 0.4s ease-in all 0.25s;
 `
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled(motion.div)`
   width: 100%;
 `
 
 export const MenuItem = styled(NavLink)`
+  text-decoration: none;
+  color: ${(props) => (props.selected ? '#1abc9c' : '#bdc3c7')};
+`
+export const MainMenu = styled(motion.div)`
   width: 100%;
   height: 2.7em;
   display: flex;
   position: relative;
   white-space: nowrap;
-  text-decoration: none;
-  color: ${(props) => (props.selected ? '#1abc9c' : '#bdc3c7')};
+
   cursor: pointer;
-  transition: 0.2s ease-in all;
   ${(props) =>
     !props.expanded &&
     css`
@@ -43,7 +44,7 @@ export const MenuItem = styled(NavLink)`
   }
 `
 
-export const MenuName = styled.p`
+export const MenuName = styled(motion.div)`
   display: ${(props) => (props.shouldExpand ? 'block' : 'none')};
   line-height: 2.5em;
 `
@@ -58,19 +59,20 @@ export const MenuIcon = styled.div`
 `
 
 export const SubMenu = styled(NavLink)`
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+`
+
+export const SubMenuItem = styled(motion.div)`
   margin-left: 15px;
   display: flex;
   color: ${(props) => (props.selected ? '#1abc9c' : '#bdc3c7')};
-  text-decoration: none;
   cursor: pointer;
-  transition: 0.2s ease-in all;
 
   &:hover {
     color: ${(props) => (props.selected ? '#1dd1a1' : '#ecf0f1')};
-  }
-
-  &:visited {
-    color: inherit;
   }
 `
 
