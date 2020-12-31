@@ -6,7 +6,7 @@ import { terser } from "rollup-plugin-terser";
 import { uglify } from "rollup-plugin-uglify";
 import packageJSON from "./package.json";
 
-const input = "./src/index.js";
+const input = "./src/components/Sidebar/Sidebar.js";
 const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, ".min.js");
 
 export default [
@@ -27,7 +27,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -48,7 +48,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             uglify()
@@ -65,7 +65,7 @@ export default [
             globals: {
                 react: "React",
                 "@emotion/styled": "styled",
-                "@emotion/react": "emotion-react",
+                "@emotion/react": "react",
                 "prop-types": "prop-types",
                 "@fortawesome/fontawesome-svg-core": "fontawesome-svg-core",
                 "@fortawesome/free-solid-svg-icons": "free-solid-svg-icons",
@@ -81,7 +81,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -96,7 +96,7 @@ export default [
             globals: {
                 react: "React",
                 "@emotion/styled": "styled",
-                "@emotion/react": "emotion-react",
+                "@emotion/react": "react",
                 "prop-types": "prop-types",
                 "@fortawesome/fontawesome-svg-core": "fontawesome-svg-core",
                 "@fortawesome/free-solid-svg-icons": "free-solid-svg-icons",
@@ -112,7 +112,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             terser()
@@ -136,7 +136,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             })
         ]
@@ -158,7 +158,7 @@ export default [
             commonjs({
                 include: 'node_modules/**',
                 namedExports: {
-                    'node_modules/react-router/node_modules/react-is/index.js': ['isValidElementType']
+                    'node_modules/react-is/index.js': ['isValidElementType']
                 }
             }),
             terser()

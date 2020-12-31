@@ -1,23 +1,4 @@
-# @bapana/react-sidebar
-
-> Completely customizable modern sidebar built with light weight and modern libraries available in the market
-
-[![NPM](https://img.shields.io/npm/v/@bapana/react-sidebar.svg)](https://www.npmjs.com/package/@bapana/react-sidebar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
-
-```bash
-npm install --save @bapana/react-sidebar
-```
-
-## Usage
-
-```jsx
 import React from 'react'
-// Sidebar Component
-import Sidebar from '@bapana/react-sidebar'
-import '@bapana/react-sidebar/lib/index.css'
-// Icons for the menu and sub menu items
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faAddressBook,
@@ -25,11 +6,12 @@ import {
   faBookmark,
   faRetweet
 } from '@fortawesome/free-solid-svg-icons'
+import Sidebar from './components/Sidebar/Sidebar'
+// import '@bapana/react-sidebar/lib/index.css'
 
-const ExampleComponent = () => {
+const App = () => {
   const brandName = {
-    name: 'Hello',
-    logoPath: '/images/logo.png'
+    name: 'Hello'
   }
 
   const menuList = [
@@ -57,13 +39,27 @@ const ExampleComponent = () => {
           to: '/report'
         }
       ]
+    },
+    {
+      name: 'Planner',
+      icon: <FontAwesomeIcon icon={faAddressCard} />,
+      to: '/planner',
+      hasChildren: true,
+      subMenu: [
+        {
+          name: 'Cast',
+          icon: <FontAwesomeIcon icon={faBookmark} />,
+          to: '/cast'
+        },
+        {
+          name: 'Vote',
+          icon: <FontAwesomeIcon icon={faRetweet} />,
+          to: '/vote'
+        }
+      ]
     }
   ]
-
   return <Sidebar brandName={brandName} menuList={menuList} />
 }
-```
 
-## License
-
-MIT © [Parthiban Baskar](https://github.com/parthikrb)
+export default App
