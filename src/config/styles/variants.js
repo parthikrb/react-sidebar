@@ -1,4 +1,4 @@
-export const titleVariants = {
+export const brandVariants = {
   show: {
     opacity: 1,
     transition: {
@@ -17,11 +17,11 @@ export const titleVariants = {
   }
 }
 
-export const subTitleVariants = {
+export const menuVariants = {
   show: {
     opacity: 1,
     transition: {
-      delay: 0,
+      delay: 0.2,
       duration: 0.8,
       ease: [0.83, 0, 0.17, 1]
     }
@@ -29,9 +29,28 @@ export const subTitleVariants = {
   hidden: {
     opacity: 0,
     transition: {
-      delay: 0,
+      delay: 0.2,
       duration: 0.8,
       ease: [0.83, 0, 0.17, 1]
+    }
+  }
+}
+
+export const menuNameVariants = {
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.2,
+      duration: 0.6
+    }
+  },
+  hidden: {
+    opacity: 0,
+    x: -100,
+    transition: {
+      delay: 0.2,
+      duration: 0.6
     }
   }
 }
