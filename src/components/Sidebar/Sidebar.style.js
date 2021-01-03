@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
+import { css } from '@emotion/react'
+import { Arrow } from '../../assets/Icons/index'
 
 export const SidebarDrawer = styled(motion.div)`
   height: 100vh;
@@ -28,9 +30,26 @@ export const Toggle = styled.div`
   right: 0;
   left: 0;
   bottom: 10px;
+  color: #bdc3c7;
   cursor: pointer;
+`
+export const ArrowIcon = styled(Arrow)`
+  width: 1.3em;
+  height: 1.3em;
+  fill: #bdc3c7;
+  stroke: #bdc3c7;
+
+  ${(props) =>
+    props.open
+      ? css`
+          transform: rotate(-180deg);
+        `
+      : css`
+          transform: rotate(0deg);
+        `}
+  transition: 0.4s transform;
 
   &:hover {
-    color: #ecf0f1;
+    fill: #ecf0f1;
   }
 `

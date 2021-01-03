@@ -1,8 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import MenuItem from '../MenuItem/MenuItem'
 import useWindowWidth from '../../hooks/useWindowWidth'
 import Header from '../Header/Header'
@@ -10,7 +8,8 @@ import {
   SidebarDrawer,
   MenuContainer,
   SubMenuContainer,
-  Toggle
+  Toggle,
+  ArrowIcon
 } from './Sidebar.style'
 import { AnimateSharedLayout } from 'framer-motion'
 import { sidebarVariants } from '../../config/styles/variants'
@@ -145,10 +144,7 @@ const Sidebar = (props) => {
           </MenuContainer>
 
           <Toggle onClick={handleToggle}>
-            <FontAwesomeIcon
-              icon={faExchangeAlt}
-              style={{ width: '1.3em', height: '1.3em' }}
-            />
+            <ArrowIcon open={isDrawerOpen} />
           </Toggle>
         </SidebarDrawer>
       </AnimateSharedLayout>

@@ -33,7 +33,18 @@ const MenuItem = (props) => {
         isMenuSelected={isMenuSelected}
         onClick={onClick}
       >
-        <MenuIcon isDrawerOpen={isDrawerOpen}>{icon}</MenuIcon>
+        <AnimatePresence>
+          <MenuIcon
+            layout
+            variants={menuNameVariants}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            isDrawerOpen={isDrawerOpen}
+          >
+            {icon}
+          </MenuIcon>
+        </AnimatePresence>
         <AnimatePresence>
           {isDrawerOpen && (
             <MenuName

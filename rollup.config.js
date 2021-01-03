@@ -66,10 +66,7 @@ export default [
                 react: "React",
                 "@emotion/styled": "styled",
                 "@emotion/react": "react",
-                "prop-types": "prop-types",
-                "@fortawesome/fontawesome-svg-core": "fontawesome-svg-core",
-                "@fortawesome/free-solid-svg-icons": "free-solid-svg-icons",
-                "@fortawesome/react-fontawesome": "react-fontawesome"
+                "prop-types": "prop-types"
             }
         },
         plugins: [
@@ -97,10 +94,7 @@ export default [
                 react: "React",
                 "@emotion/styled": "styled",
                 "@emotion/react": "react",
-                "prop-types": "prop-types",
-                "@fortawesome/fontawesome-svg-core": "fontawesome-svg-core",
-                "@fortawesome/free-solid-svg-icons": "free-solid-svg-icons",
-                "@fortawesome/react-fontawesome": "react-fontawesome"
+                "prop-types": "prop-types"
             }
         },
         plugins: [
