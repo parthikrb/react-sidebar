@@ -17,6 +17,10 @@ import { sidebarVariants } from '../../config/styles/variants'
 const Sidebar = (props) => {
   const { brandName, isExpanded, menuList } = props
 
+  /**
+   * Holds the current width of the browser
+   * width is used to decide whether to expand or collapse the sidebar
+   */
   const width = useWindowWidth()
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(isExpanded)
@@ -25,10 +29,18 @@ const Sidebar = (props) => {
   const [menuItems, setMenuItems] = useState(menuList)
   const [navigateTo, setNavigateTo] = useState('/')
 
+  /**
+   * if the width of the browser is less than 1280
+   * sidebar will get collapsed automatically
+   */
   useEffect(() => {
     width < 1280 ? setIsDrawerOpen(false) : setIsDrawerOpen(true)
   }, [width])
 
+  /**
+   * if the sidebar is collapsed,
+   * it will get expanded and collapsed on mouse enter and leave respectively
+   */
   useEffect(() => {
     const mouseTarget = document.getElementById('sidebar')
     mouseTarget.addEventListener('mouseenter', () => {
@@ -39,14 +51,27 @@ const Sidebar = (props) => {
     })
   }, [])
 
+  /**
+   * based on the mouse hover and toggle action,
+   * we decide whether or not to expand the sidebar
+   */
   useEffect(() => {
     setShouldExpand(hoverOpen || isDrawerOpen)
   }, [hoverOpen, isDrawerOpen])
 
+  /**
+   * on toggle, it set the sidebar open value
+   */
   const handleToggle = () => {
     setIsDrawerOpen(!isDrawerOpen)
   }
 
+  /**
+   *
+   * @param {number} index - position of the  menu item selected by user
+   * we will set the isOpen value to true for the given index
+   * isOpen value for all other items will be set to false
+   */
   const handleExpandMenu = (index) => {
     const _menuItems = [...menuItems]
 
@@ -61,6 +86,13 @@ const Sidebar = (props) => {
     setMenuItems(_menuItems)
   }
 
+  /**
+   *
+   * @param {string} index - position of the menu item selected by user
+   * @param {string} to - navigation path for the selected menu item
+   * reset the isSelected value to false for all items in the menu
+   * set isSelected to true for the index
+   */
   const handleMenuSelection = (index, to) => {
     const _menuItems = [...menuItems]
 
@@ -86,6 +118,15 @@ const Sidebar = (props) => {
     setNavigateTo(to)
   }
 
+  /**
+   *
+   * @param {string} index - position of the menu item selected by user
+   * @param {string} to - navigation path for the selected menu item
+   * if the index has _, it indicates that user has selected sub menu
+   * we split the index with _, by which we get main menu index and sub menu index
+   * if the main menu doesn't have any children, we will call handleMenuSelection()
+   * if the main menu does have children, we will call handleExpandMenu()
+   */
   const handleMenuClick = (index, to) => {
     !index.toString().includes('_') && menuItems[index].hasChildren
       ? handleExpandMenu(index)

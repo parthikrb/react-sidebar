@@ -55,6 +55,25 @@ export const menuNameVariants = {
   }
 }
 
+export const menuIconVariants = {
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0,
+      duration: 0.6
+    }
+  },
+  hidden: {
+    opacity: 0,
+    x: -100,
+    transition: {
+      delay: 0,
+      duration: 0.6
+    }
+  }
+}
+
 export const sidebarVariants = {
   expanded: {
     width: '20%',

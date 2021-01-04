@@ -33,17 +33,16 @@ export const MenuIcon = styled(motion.div)`
 `
 
 export const MenuName = styled(motion.div)`
-  /* display: ${(props) => (props.isDrawerOpen ? 'block' : 'none')}; */
   line-height: 2.5em;
 `
 
 export const DropDownIcon = styled.span`
   border: solid #ecf0f1;
   border-width: 0 1px 1px 0;
-  transform: ${(props) => (props.open ? 'rotate(-135deg)' : 'rotate(45deg)')};
+  transform: ${(props) => (props.open ? 'rotate(45deg)' : 'rotate(135deg)')};
   position: absolute;
   right: 25px;
-  top: ${(props) => (props.open ? '18px' : '19px')};
+  top: 19px;
   padding: 3px;
   transition: 0.4s;
 `
