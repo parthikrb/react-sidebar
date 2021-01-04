@@ -23,6 +23,7 @@
         "sidenav",
         "styleguide",
         "styleguidist",
+        "svgr",
         "unlisten"
     ]
 }

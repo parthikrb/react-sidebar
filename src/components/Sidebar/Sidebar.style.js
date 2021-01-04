@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
+import { css } from '@emotion/react'
+import { Arrow } from '../../assets/Icons/index'
 
 export const SidebarDrawer = styled(motion.div)`
   height: 100vh;
@@ -9,8 +11,8 @@ export const SidebarDrawer = styled(motion.div)`
   padding: 0;
   box-sizing: border-box;
   position: relative;
-  background-color: #222f3e;
-  color: #bdc3c7;
+  background-color: ${(props) => props.theme.sidebar.backgroundColor};
+  color: ${(props) => props.theme.sidebar.color};
 `
 
 export const MenuContainer = styled(motion.div)`
@@ -29,8 +31,24 @@ export const Toggle = styled.div`
   left: 0;
   bottom: 10px;
   cursor: pointer;
+`
+export const ArrowIcon = styled(Arrow)`
+  width: 1.3em;
+  height: 1.3em;
+  fill: ${(props) => props.theme.toggle.color};
+  stroke: ${(props) => props.theme.toggle.color};
+
+  ${(props) =>
+    props.open
+      ? css`
+          transform: rotate(-180deg);
+        `
+      : css`
+          transform: rotate(0deg);
+        `}
+  transition: 0.4s transform;
 
   &:hover {
-    color: #ecf0f1;
+    fill: ${(props) => props.theme.toggle.hoverColor};
   }
 `

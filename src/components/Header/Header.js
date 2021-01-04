@@ -1,66 +1,73 @@
 import React, { Fragment } from 'react'
 import { BrandContainer, Brand, BrandLogo } from './Header.style'
+import PropTypes from 'prop-types'
 import { AnimatePresence } from 'framer-motion'
 import { brandVariants } from '../../config/styles/variants'
 
-const Header = ({ shouldExpand, brandName }) => {
+const brandAnimationProps = {
+  variants: brandVariants,
+  initial: 'hidden',
+  animate: 'show',
+  exit: 'hidden'
+}
+
+const Header = ({ shouldExpand, brandName, theme }) => {
   return (
-    <BrandContainer>
+    <BrandContainer theme={theme}>
       {/* 
                 if logo path is present and sidebar is expanded, then display Logo and name
                 if logo path is not present and sidebar is expanded, then display name only
                 if logo path is present and sidebar is collapsed, then display logo
                 if logo path is not present and sidebar is collapsed, then display first character of name
                 */}
-      {shouldExpand ? (
-        !!brandName.logoPath ? (
-          <Fragment>
-            <BrandLogo src={brandName.logoPath} />
-            <AnimatePresence>
+      <AnimatePresence>
+        {shouldExpand ? (
+          !!brandName.logoPath ? (
+            <Fragment>
+              <BrandLogo src={brandName.logoPath} />
               <Brand
+                theme={theme}
                 shouldDisplay={shouldExpand}
                 layout
-                variants={brandVariants}
-                initial='hidden'
-                animate='show'
-                exit='hidden'
+                {...brandAnimationProps}
               >
                 {brandName.name}
               </Brand>
-            </AnimatePresence>
-          </Fragment>
-        ) : (
-          <AnimatePresence>
+            </Fragment>
+          ) : (
             <Brand
+              theme={theme}
               shouldDisplay={shouldExpand}
               layout
-              variants={brandVariants}
-              initial='hidden'
-              animate='show'
-              exit='hidden'
+              {...brandAnimationProps}
             >
               {brandName.name}
             </Brand>
-          </AnimatePresence>
-        )
-      ) : !!brandName.logoPath ? (
-        <BrandLogo src={brandName.logoPath} />
-      ) : (
-        <AnimatePresence>
+          )
+        ) : !!brandName.logoPath ? (
+          <BrandLogo src={brandName.logoPath} />
+        ) : (
           <Brand
+            theme={theme}
             shouldDisplay={!shouldExpand}
             layout
-            variants={brandVariants}
-            initial='hidden'
-            animate='show'
-            exit='hidden'
+            {...brandAnimationProps}
           >
             {brandName.name.charAt(0).toUpperCase()}
           </Brand>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </BrandContainer>
   )
+}
+
+Header.propTypes = {
+  brandName: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    logoPath: PropTypes.string
+  }),
+  shouldExpand: PropTypes.bool.isRequired,
+  theme: PropTypes.object
 }
 
 export default React.memo(Header)

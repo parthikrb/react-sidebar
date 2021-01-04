@@ -8,6 +8,7 @@ export const BrandContainer = styled.div`
   justify-content: center;
   box-shadow: 0 2px 5px gray;
   line-height: 3em;
+  background-color: ${(props) => props.theme.header.backgroundColor};
 `
 
 export const Brand = styled(motion.div)`
@@ -15,8 +16,13 @@ export const Brand = styled(motion.div)`
   font-size: xx-large;
   font-weight: bolder;
   letter-spacing: 0.1em;
+  color: ${(props) => props.theme.header.color};
   display: ${(props) => (props.shouldDisplay ? 'block' : 'none')};
   cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme.header.hoverColor};
+  }
 `
 
 export const BrandLogo = styled.img`

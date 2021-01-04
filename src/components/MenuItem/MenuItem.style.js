@@ -8,7 +8,10 @@ export const Menu = styled(motion.div)`
   display: flex;
   position: relative;
   white-space: nowrap;
-  color: ${(props) => (props.isMenuSelected ? '#1abc9c' : '#bdc3c7')};
+  color: ${(props) =>
+    props.isMenuSelected
+      ? props.theme.menuItem.active
+      : props.theme.menuItem.color};
   cursor: pointer;
   ${(props) =>
     !props.isMenuExpanded &&
@@ -18,7 +21,10 @@ export const Menu = styled(motion.div)`
     `}
 
   &:hover {
-    color: ${(props) => (props.isMenuSelected ? '#1dd1a1' : '#ecf0f1')};
+    color: ${(props) =>
+      props.isMenuSelected
+        ? props.theme.menuItem.activeHoverColor
+        : props.theme.menuItem.hoverColor};
     transition: 0.1s ease-in all;
   }
 `
@@ -33,17 +39,16 @@ export const MenuIcon = styled(motion.div)`
 `
 
 export const MenuName = styled(motion.div)`
-  /* display: ${(props) => (props.isDrawerOpen ? 'block' : 'none')}; */
   line-height: 2.5em;
 `
 
 export const DropDownIcon = styled.span`
-  border: solid #ecf0f1;
+  border: solid ${(props) => props.theme.expandArrow.color};
   border-width: 0 1px 1px 0;
-  transform: ${(props) => (props.open ? 'rotate(-135deg)' : 'rotate(45deg)')};
+  transform: ${(props) => (props.open ? 'rotate(45deg)' : 'rotate(135deg)')};
   position: absolute;
   right: 25px;
-  top: ${(props) => (props.open ? '18px' : '19px')};
+  top: 19px;
   padding: 3px;
   transition: 0.4s;
 `

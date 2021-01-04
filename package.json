@@ -23,7 +23,8 @@
     "test": "jest",
     "start": "styleguidist server",
     "example": "react-scripts start",
-    "build": "rollup -c",
+    "icon": "npx @svgr/cli -d ./src/assets/Icons ./src/assets/Icons",
+    "build": "npm run icon && rollup -c",
     "prepublishOnly": "npm run build",
     "docs:build": "styleguidist build"
   },
@@ -31,19 +32,19 @@
     "react": "17.x",
     "prop-types": "15.x",
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.14"
+    "@emotion/styled": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-external-helpers": "^7.12.1",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@svgr/cli": "^5.5.0",
     "@testing-library/react": "^8.0.7",
     "babel-eslint": "^10.1.0",
-    "babel-plugin-emotion": "^10.0.14",
     "babel-plugin-module-resolver": "^3.2.0",
     "husky": "^4.3.6",
     "jest-emotion": "^10.0.14",
@@ -70,9 +71,6 @@
   "dependencies": {
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.14",
     "framer-motion": "^3.1.1",
     "prop-types": "15.7.2"
   },
