@@ -11,8 +11,8 @@ export const SidebarDrawer = styled(motion.div)`
   padding: 0;
   box-sizing: border-box;
   position: relative;
-  background-color: #222f3e;
-  color: #bdc3c7;
+  background-color: ${(props) => props.theme.sidebar.backgroundColor};
+  color: ${(props) => props.theme.sidebar.color};
 `
 
 export const MenuContainer = styled(motion.div)`
@@ -30,14 +30,13 @@ export const Toggle = styled.div`
   right: 0;
   left: 0;
   bottom: 10px;
-  color: #bdc3c7;
   cursor: pointer;
 `
 export const ArrowIcon = styled(Arrow)`
   width: 1.3em;
   height: 1.3em;
-  fill: #bdc3c7;
-  stroke: #bdc3c7;
+  fill: ${(props) => props.theme.toggle.color};
+  stroke: ${(props) => props.theme.toggle.color};
 
   ${(props) =>
     props.open
@@ -50,6 +49,6 @@ export const ArrowIcon = styled(Arrow)`
   transition: 0.4s transform;
 
   &:hover {
-    fill: #ecf0f1;
+    fill: ${(props) => props.theme.toggle.hoverColor};
   }
 `

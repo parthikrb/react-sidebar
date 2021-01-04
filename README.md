@@ -64,6 +64,48 @@ const ExampleComponent = () => {
 }
 ```
 
+## Styles Customization
+
+Passing the _theme_ property to Sidebar component as below will adopt the given color patterns
+
+| Key         | Description                  |
+| ----------- | ---------------------------- |
+| header      | Sidebar Header color code    |
+| menuItem    | Menu items color code        |
+| expandArrow | Menu expand arrow color code |
+| toggle      | Toggle arrow color code      |
+| sidebar     | Sidebar color code           |
+
+> below is the default color code
+
+```js
+theme: {
+    header: {
+      color: '#bdc3c7',
+      hoverColor: '#ecf0f1',
+      backgroundColor: '#222f3e'
+    },
+    menuItem: {
+      color: '#bdc3c7',
+      hoverColor: '#ecf0f1',
+      active: '#1abc9c',
+      activeHoverColor: '#1dd1a1'
+    },
+    expandArrow: {
+      color: '#ecf0f1'
+    },
+    toggle: {
+      color: '#bdc3c7',
+      hoverColor: '#ecf0f1'
+    },
+    sidebar: {
+      backgroundColor: '#222f3e',
+      color: '#bdc3c7'
+    }
+  }
+
+```
+
 ## License
 
 MIT © [Parthiban Baskar](https://github.com/parthikrb)

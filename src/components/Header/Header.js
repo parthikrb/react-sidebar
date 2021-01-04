@@ -11,9 +11,9 @@ const brandAnimationProps = {
   exit: 'hidden'
 }
 
-const Header = ({ shouldExpand, brandName }) => {
+const Header = ({ shouldExpand, brandName, theme }) => {
   return (
-    <BrandContainer>
+    <BrandContainer theme={theme}>
       {/* 
                 if logo path is present and sidebar is expanded, then display Logo and name
                 if logo path is not present and sidebar is expanded, then display name only
@@ -26,6 +26,7 @@ const Header = ({ shouldExpand, brandName }) => {
             <Fragment>
               <BrandLogo src={brandName.logoPath} />
               <Brand
+                theme={theme}
                 shouldDisplay={shouldExpand}
                 layout
                 {...brandAnimationProps}
@@ -34,14 +35,24 @@ const Header = ({ shouldExpand, brandName }) => {
               </Brand>
             </Fragment>
           ) : (
-            <Brand shouldDisplay={shouldExpand} layout {...brandAnimationProps}>
+            <Brand
+              theme={theme}
+              shouldDisplay={shouldExpand}
+              layout
+              {...brandAnimationProps}
+            >
               {brandName.name}
             </Brand>
           )
         ) : !!brandName.logoPath ? (
           <BrandLogo src={brandName.logoPath} />
         ) : (
-          <Brand shouldDisplay={!shouldExpand} layout {...brandAnimationProps}>
+          <Brand
+            theme={theme}
+            shouldDisplay={!shouldExpand}
+            layout
+            {...brandAnimationProps}
+          >
             {brandName.name.charAt(0).toUpperCase()}
           </Brand>
         )}
@@ -55,7 +66,8 @@ Header.propTypes = {
     name: PropTypes.string.isRequired,
     logoPath: PropTypes.string
   }),
-  shouldExpand: PropTypes.bool.isRequired
+  shouldExpand: PropTypes.bool.isRequired,
+  theme: PropTypes.object
 }
 
 export default React.memo(Header)

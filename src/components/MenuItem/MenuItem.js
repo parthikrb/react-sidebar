@@ -35,7 +35,8 @@ const MenuItem = (props) => {
     isDrawerOpen,
     isMenuExpanded,
     isMenuSelected,
-    onClick
+    onClick,
+    theme
   } = props
   const history = useHistory()
 
@@ -50,6 +51,7 @@ const MenuItem = (props) => {
     <AnimatePresence>
       <Menu
         layout
+        theme={theme}
         {...menuAnimationProps}
         isMenuExpanded={isMenuExpanded}
         isMenuSelected={isMenuSelected}
@@ -68,7 +70,7 @@ const MenuItem = (props) => {
           </MenuName>
         )}
         {hasChildren && isDrawerOpen && (
-          <DropDownIcon open={isMenuExpanded || false} />
+          <DropDownIcon theme={theme} open={isMenuExpanded || false} />
         )}
       </Menu>
     </AnimatePresence>
@@ -81,9 +83,10 @@ MenuItem.propTypes = {
   icon: PropTypes.element,
   hasChildren: PropTypes.bool.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
-  isMenuExpanded: PropTypes.bool.isRequired,
-  isMenuSelected: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  isMenuExpanded: PropTypes.bool,
+  isMenuSelected: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  theme: PropTypes.object
 }
 
 export default memo(MenuItem)
